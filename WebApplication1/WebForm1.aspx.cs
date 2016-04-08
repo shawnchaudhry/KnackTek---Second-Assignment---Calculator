@@ -39,6 +39,7 @@ namespace WebApplication1
             }
             else
             {
+                lblAnswer.Text = "You cannot divide by 0.";
                 double arg2 = 0;
                 return arg2;
             }
@@ -47,32 +48,39 @@ namespace WebApplication1
         public void finish(Object Sender, EventArgs e)
         {
             String answer = "";
-            Double arg0 = Double.Parse(tbOne.Text);
-            Double arg1 = Double.Parse(tbTwo.Text);
-
-            if (rblOperations.SelectedValue.CompareTo("Add") == 0)
+            try
             {
-               answer = "" + add(arg0, arg1);
-            }
+                Double arg0 = Double.Parse(tbOne.Text);
+                Double arg1 = Double.Parse(tbTwo.Text);
 
-            if (rblOperations.SelectedValue.CompareTo("Subtract") == 0)
+                if (rblOperations.SelectedValue.CompareTo("Add") == 0)
+                {
+                    answer = "" + add(arg0, arg1);
+                }
+
+                if (rblOperations.SelectedValue.CompareTo("Subtract") == 0)
+                {
+                    answer = "" + subtract(arg0, arg1);
+                }
+
+                if (rblOperations.SelectedValue.CompareTo("Multiply") == 0)
+                {
+                    answer = "" + multiply(arg0, arg1);
+                }
+
+                if (rblOperations.SelectedValue.CompareTo("Divide") == 0)
+                {
+                    answer = "" + divide(arg0, arg1);
+                }
+
+                Label answerLabel = new Label();
+                answerLabel.Text = answer;
+                Page.Controls.Add(answerLabel);
+            }
+            catch (FormatException)
             {
-                answer = "" + subtract(arg0, arg1);
+                lblAnswer.Text = "Please input a number!";
             }
-
-            if (rblOperations.SelectedValue.CompareTo("Multiply") == 0)
-            {
-                answer = "" + multiply(arg0, arg1);
-            }
-
-            if (rblOperations.SelectedValue.CompareTo("Divide") == 0)
-            {
-                answer = "" + divide(arg0, arg1);
-            }
-
-            Label answerLabel = new Label();
-            answerLabel.Text = answer;
-            Page.Controls.Add(answerLabel);
         }
     }
 }
