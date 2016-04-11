@@ -32,7 +32,7 @@ namespace WebApplication1
         }
         public double divide(double arg0, double arg1)
         {
-            if (arg1 == 0)
+            if (arg1 != 0)
             {
                 double arg2 = arg0 / arg1;
                 return arg2;
@@ -72,7 +72,6 @@ namespace WebApplication1
                 {
                     answer = "" + divide(arg0, arg1);
                 }
-
                 Label answerLabel = new Label();
                 answerLabel.Text = answer;
                 Page.Controls.Add(answerLabel);
