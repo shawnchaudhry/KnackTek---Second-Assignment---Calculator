@@ -32,7 +32,7 @@ namespace WebApplication1
         }
         public double divide(double arg0, double arg1)
         {
-            if (arg1 > 0)
+            if (arg1 == 0)
             {
                 double arg2 = arg0 / arg1;
                 return arg2;
@@ -45,7 +45,7 @@ namespace WebApplication1
             }
         }
 
-        public void finish(Object Sender, EventArgs e)
+        public void finish(object Sender, EventArgs e)
         {
             String answer = "";
             try
